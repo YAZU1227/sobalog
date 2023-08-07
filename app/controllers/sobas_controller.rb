@@ -12,6 +12,11 @@ class SobasController < ApplicationController
     redirect_to '/'
   end
 
+  def search
+    @q = Soba.ransack(params[:q])
+    @sobas = @q.result
+  end
+
   private
   
   def soba_params
