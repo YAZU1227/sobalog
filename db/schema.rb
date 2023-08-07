@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_06_122157) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_023445) do
+  create_table "sobas", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.string "hot_menu"
+    t.string "cold_menu"
+    t.string "side_menu"
+    t.string "alcohol_menu"
+    t.string "sobayu"
+    t.string "eating_with"
+    t.string "seat"
+    t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

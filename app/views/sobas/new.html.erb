@@ -1,0 +1,95 @@
+
+<h1>そば屋新規投稿</h1>
+
+<%= form_with(model: @soba, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :店名 %>
+    <%= form.text_field :name %>
+  </div>
+
+  <h2>蕎麦の種類</h2>
+  <div class="field">
+    <% soba_types = ['二八', '十割', '田舎', '更科', '藪', '砂場', 'その他'] %>
+      <% soba_types.each do |type, label| %>
+      <%= form.check_box :soba_types, { multiple: true }, type, nil %>
+      <%= form.label type, label %><br>
+<% end %>
+</div>
+
+  <h2>メニュー</h2>
+  <div class="field">
+    <% hot_menus = ['天ぷら', 'とろろ', '山菜', 'きつね', 'たぬき', 'せいろ', 'なめこ', '月見', '鴨南蛮', 'にしん', 'みぞれ', '花巻', 'その他'] %>
+    <% cold_menus = ['天ざる', 'おろし', 'とろろ', '山菜', 'なめこ', 'たぬき', 'にしん', 'きつね', 'その他'] %>
+
+  <h3>温</h3>
+    <% hot_menus.each do |hot_menu, label| %>
+      <%= form.check_box :hot_menus, { multiple: true }, hot_menu, nil %>
+      <%= form.label hot_menu, label %><br>
+    <% end %>
+
+  <h3>冷</h3>
+    <% cold_menus.each do |cold_menu, label| %>
+      <%= form.check_box :cold_menus, { multiple: true }, cold_menu, nil %>
+      <%= form.label cold_menu, label %><br>
+    <% end %>
+</div>
+
+  <h2>一品物</h2>
+  <div class="field">
+    <% side_menus = ['天ぷら', 'そばがき', '焼きみそ', '板わさ', 'だし巻き', 'そば豆腐', 'ご飯物', '甘味', 'その他'] %>
+    <% side_menus.each do |side_menu, label| %>
+      <%= form.check_box :side_menus, { multiple: true }, side_menu, nil %>
+      <%= form.label side_menu, label %><br>
+    <% end %>
+  </div>
+
+  <h2>酒類</h2>
+  <div class="field">
+    <% alcohol_menus = ['ビール', '日本酒', '焼酎', 'その他'] %>
+    <% alcohol_menus.each do |alcohol_menu, label| %>
+      <%= form.check_box :alcohol_menus, { multiple: true }, alcohol_menu, nil %>
+      <%= form.label alcohol_menu, label %><br>
+    <% end %>
+  </div>
+
+  <h2>蕎麦湯</h2>
+  <div class="field">
+    <% sobayus = ['サラサラ', 'ドロドロ', 'その他'] %>
+    <% sobayus.each do |sobayu, label| %>
+      <%= form.check_box :sobayus, { multiple: true }, sobayu, nil %>
+      <%= form.label sobayu, label %><br>
+    <% end %>
+  </div>
+
+  <h2>食べ方</h2>
+  <div class="field">
+    <% eating_withs = ['つゆ', '塩', 'その他'] %>
+    <% eating_withs.each do |eating_with, label| %>
+      <%= form.check_box :eating_withs, { multiple: true }, eating_with, nil %>
+      <%= form.label eating_with, label %><br>
+    <% end %>
+  </div>
+
+  <h2>座席</h2>
+  <div class="field">
+    <% seats = ['テーブル', '座敷', 'カウンター', '個室', 'その他'] %>
+    <% seats.each do |seat, label| %>
+      <%= form.check_box :seats, { multiple: true }, seat, nil %>
+      <%= form.label seat, label %><br>
+    <% end %>
+  </div>
+
+  <h2>価格帯（一人当たり）</h2>
+  <div class="field">
+    <% price_ranges = ['~¥1,000', '¥1,000~¥1,500', '¥1,500~¥2,000', '¥2,000~¥3,000', '¥3,000~¥5,000', '¥5,000~¥10,000', '¥10,000~'] %>
+    <% price_ranges.each do |price_range, label| %>
+      <%= form.check_box :price_ranges, { multiple: true }, price_range, nil %>
+      <%= form.label price_range, label %><br>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "投稿" %>
+  </div>
+
+<% end %>
