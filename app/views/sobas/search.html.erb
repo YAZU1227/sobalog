@@ -1,1 +1,91 @@
 <h3>蕎麦屋検索</h3>
+<div class='item-contents' id="detailed-search-result-wrapper">
+  <%= search_form_for @q, url: search_results_sobas_path, html: {id: "detailed-search-form"} do |f| %>
+    <div class="search-field">
+        <%= f.label :name, '店名' %>
+        <br>
+        <%= f.text_field :name, placeholder: '店名を入力' %>
+    </div>
+
+    <h2>蕎麦の種類</h2>
+    <div class="field">
+      <% types = ['二八', '十割', '田舎', '更科', '藪', '砂場', 'その他'] %>
+      <% types.each do |type| %>
+        <%= f.check_box :type_in, { multiple: true }, type %>
+        <%= f.label type, type %><br>
+      <% end %>
+    </div>
+
+    <h2>メニュー</h2>
+    <div class="field">
+      <% hot_menus = ['天ぷら', 'とろろ', '山菜', 'きつね', 'たぬき', 'せいろ', 'なめこ', '月見', '鴨南蛮', 'にしん', 'みぞれ', '花巻', 'その他'] %>
+      <h3>温</h3>
+      <% hot_menus.each do |hot_menu| %>
+        <%= f.check_box :hot_menu_in, { multiple: true }, hot_menu %>
+        <%= f.label hot_menu, hot_menu %><br>
+      <% end %>
+      <% cold_menus = ['天ざる', 'おろし', 'とろろ', '山菜', 'なめこ', 'たぬき', 'にしん', 'きつね', 'その他'] %>
+      <h3>冷</h3>
+      <% cold_menus.each do |cold_menu| %>
+        <%= f.check_box :cold_menu_in, { multiple: true }, cold_menu %>
+        <%= f.label cold_menu, cold_menu %><br>
+      <% end %>
+    </div>
+
+    <h2>一品物</h2>
+<div class="field">
+  <% side_menus = ['天ぷら', 'そばがき', '焼きみそ', '板わさ', 'だし巻き', 'そば豆腐', 'ご飯物', '甘味', 'その他'] %>
+  <% side_menus.each do |side_menu| %>
+    <%= f.check_box :side_menu_in, { multiple: true }, side_menu %>
+    <%= f.label side_menu, side_menu %><br>
+  <% end %>
+</div>
+
+<h2>酒類</h2>
+<div class="field">
+  <% alcohol_menus = ['ビール', '日本酒', '焼酎', 'その他'] %>
+  <% alcohol_menus.each do |alcohol_menu| %>
+    <%= f.check_box :alcohol_menu_in, { multiple: true }, alcohol_menu %>
+    <%= f.label alcohol_menu, alcohol_menu %><br>
+  <% end %>
+</div>
+
+<h2>蕎麦湯</h2>
+<div class="field">
+  <% sobayus = ['サラサラ', 'ドロドロ', 'その他'] %>
+  <% sobayus.each do |sobayu| %>
+    <%= f.check_box :sobayu_in, { multiple: true }, sobayu %>
+    <%= f.label sobayu, sobayu %><br>
+  <% end %>
+</div>
+
+<h2>食べ方</h2>
+<div class="field">
+  <% eating_withs = ['つゆ', '塩', 'その他'] %>
+  <% eating_withs.each do |eating_with| %>
+    <%= f.check_box :eating_with_in, { multiple: true }, eating_with %>
+    <%= f.label eating_with, eating_with %><br>
+  <% end %>
+</div>
+
+<h2>座席</h2>
+<div class="field">
+  <% seats = ['テーブル', '座敷', 'カウンター', '個室', 'その他'] %>
+  <% seats.each do |seat| %>
+    <%= f.check_box :seat_in, { multiple: true }, seat %>
+    <%= f.label seat, seat %><br>
+  <% end %>
+</div>
+
+<h2>価格帯</h2>
+<div class="field">
+  <% prices = ['~¥1,000', '¥1,000~¥1,500', '¥1,500~¥2,000', '¥2,000~¥3,000', '¥3,000~¥5,000', '¥5,000~¥10,000', '¥10,000~'] %>
+  <% prices.each do |price| %>
+    <%= f.check_box :price_in, { multiple: true }, price %>
+    <%= f.label price, price %><br>
+  <% end %>
+</div>
+
+    <%= f.submit '検索' %>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<h3>検索結果</h3>
+<div class="soba-list">
+  <% if @sobas.any? %>
+    <% @sobas.each do |soba| %>
+      <div class="soba-item">
+        <h4><%= soba.name %></h4>
+      </div>
+    <% end %>
+  <% else %>
+    <p>条件に当てはまる蕎麦屋が見つかりません。</p>
+  <% end %>
+</div>

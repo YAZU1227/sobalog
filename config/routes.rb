@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+get 'search_results_sobas', to: 'sobas#search_results', as: 'search_results_sobas'
 end

@@ -13,9 +13,18 @@ class SobasController < ApplicationController
   end
 
   def search
+    
     @q = Soba.ransack(params[:q])
     @sobas = @q.result
   end
+
+  def search_results
+    binding.pry
+    @q = Soba.ransack(params[:q])
+    @sobas = @q.result
+  end
+  
+
 
   private
   
